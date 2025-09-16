@@ -1,0 +1,81 @@
+﻿@model TraversalProject.Models.UserRegisterVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Traversal User Register</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- LINEARICONS -->
+	<link rel="stylesheet" href="/colorlib-regform-26/fonts/linearicons/style.css">
+
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="/colorlib-regform-26/css/style.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<div class="inner">
+			<img src="/colorlib-regform-26/images/image-1.png" alt="" class="image-1">
+			<form method="post">
+				<h3>Create a New Account</h3>
+				<div class="form-holder">
+					<span class="lnr lnr-user"></span>
+					<input type="text" class="form-control" asp-for="Name" placeholder="Name">
+				</div>
+				<span asp-validation-for="Name" class="text-danger"></span>
+
+				<div class="form-holder">
+					<span class="lnr lnr-user"></span>
+					<input type="text" class="form-control" asp-for="SurName" placeholder="Surname">
+				</div>
+				<span asp-validation-for="SurName"></span>
+
+				<div class="form-holder">
+					<span class="lnr lnr-envelope"></span>
+					<input type="text" class="form-control" asp-for="Mail" placeholder="Mail">
+				</div>
+				<span asp-validation-for="Mail"></span>
+
+				<div class="form-holder">
+					<span class="lnr lnr-phone-handset"></span>
+					<input type="text" class="form-control" asp-for="UserName" placeholder="UserNmae">
+				</div>
+				<span asp-validation-for="UserName"></span>
+
+				<div class="form-holder">
+					<span class="lnr lnr-lock"></span>
+					<input type="password" class="form-control" asp-for="Password" placeholder="Password">
+				</div>
+				<span asp-validation-for="Password" class="text-danger"></span>
+
+				<div class="form-holder">
+					<span class="lnr lnr-lock"></span>
+					<input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Confirm Password">
+				</div>
+				<span asp-validation-for="ConfirmPassword"></span>
+				<div asp-validation-summary="ModelOnly"></div>
+
+				<button>
+					<span>Register</span>
+				</button>
+				<a class="btn btn-primary" href="/Login/SignIn/">
+					<span>SignIn</span>
+				</a>
+
+			</form>
+			<img src="/colorlib-regform-26/images/image-2.png" alt="" class="image-2">
+		</div>
+
+	</div>
+
+	<script src="/colorlib-regform-26/js/jquery-3.3.1.min.js"></script>
+	<script src="/colorlib-regform-26/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

@@ -1,0 +1,32 @@
+﻿@using System.Globalization;
+@using TraversalProject.Areas.Admin.Models;
+@model IEnumerable<BookingHotelSearchVm.Result>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+    double score;
+}
+
+<h1>Booking Hotel Reservation</h1>
+
+<table class="table table-striped">
+    <tr>
+        <td>#</td>
+        <td>Hotel's Name</td>
+        <td>Review Score</td>
+        <td>Review</td>
+        <td>Details</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.hotel_name</td>
+            <td>@item.review_score.ToString("0.0", CultureInfo.InvariantCulture)</td>
+            <td>@item.review_score_word</td>
+            <td><a href="@item.url" class="btn btn-outline-primary" target="_blank">Go to Reservation</a></td>
+        </tr>
+    }
+</table>

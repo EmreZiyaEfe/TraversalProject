@@ -1,0 +1,59 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Traversal.Business.Abstract;
+using Traversal.Business.Concrete;
+using Traversal.Core.Concrete.Entities;
+
+namespace TraversalProject.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class DestinationController : Controller
+    {
+        private readonly IDestinationService _destinationService;
+
+        public DestinationController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
+        public IActionResult Index()
+        {
+            var values = _destinationService.GetAll();
+            return View(values);
+        }
+
+        [HttpGet]
+        public IActionResult AddDestination()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddDestination(Destination destination)
+        {
+            _destinationService.Add(destination);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult DeleteDestination(int id)
+        {
+            var values = _destinationService.GetById(id);
+            _destinationService.Delete(values);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet] 
+        public IActionResult UpdateDestination(int id)
+        {
+            var values = _destinationService.GetById(id);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateDestination(Destination destination)
+        {
+            _destinationService.Update(destination);
+            return RedirectToAction("Index");
+        }
+    }
+}

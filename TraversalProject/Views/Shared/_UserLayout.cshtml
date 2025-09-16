@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Html.PartialAsync("/Areas/Member/Views/MemberLayoutPartial/_MemberHeaderPartial.cshtml")
+
+<body class="g-sidenav-show  bg-gray-100">
+    @await Html.PartialAsync("/Areas/Member/Views/MemberLayoutPartial/_MemberSidebarPartial.cshtml")
+    <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+        <!-- Navbar -->
+        @await Html.PartialAsync("/Areas/Member/Views/MemberLayoutPartial/_MemberNavbarPartial.cshtml")
+
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
+            @RenderBody()
+            @await Html.PartialAsync("/Areas/Member/Views/MemberLayoutPartial/_MemberFooterPartial.cshtml")
+
+        </div>
+    </main>
+    @await Html.PartialAsync("/Areas/Member/Views/MemberLayoutPartial/_MemberRightbarPartial.cshtml")
+
+    <!--   Core JS Files   -->
+    @await Html.PartialAsync("/Areas/Member/Views/MemberLayoutPartial/_MemberScriptPartial.cshtml");
+</body>
+
+</html>
+

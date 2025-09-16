@@ -1,0 +1,22 @@
+﻿@using TraversalProject.CQRS.Results.DestinationResults;
+@model GetDestinationByIdQueryResult
+@{
+    ViewData["Title"] = "GetDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Update Destination with CQRS</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Id"/>
+    <label>City</label>
+    <input type="text" asp-for="City" class="form-control"/>
+    <br />
+    <label>Day - Night</label>
+    <input type="text" asp-for="DayNight" class="form-control"/>
+    <br />
+    <label>Price</label>
+    <input type="text" asp-for="Price" class="form-control" />
+    <br />
+    <button class="btn btn-outline-success">Update</button>
+</form>

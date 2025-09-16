@@ -1,0 +1,32 @@
+﻿@using TraversalProject.Models;
+@model MailRequest
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        @Html.Label("Recieve Mail Address")
+        <br />
+        <input type="text" asp-for="RecieverMail" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Subject")
+        <input type="text" asp-for="Subject" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label asp-for="File" class="control-label"></label>
+        <input type="file" asp-for="File" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Message")
+        <textarea cols="30" rows="5" asp-for="Body" class="form-control"> </textarea>
+    </div>
+    <br />
+    <button class="btn btn-outline-primary">Send</button>
+</form>
+

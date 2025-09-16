@@ -1,0 +1,40 @@
+﻿@model List<ContactUs>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>ContactUs Messages</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Sender</th>
+        <th>Subject</th>
+        <th>Date</th>
+        <th>Read</th>
+        <th>Delete</th>
+    </tr>
+
+    @if (Model == null || !Model.Any())
+    {
+    <tr>
+        <td colspan="6" class="text-center text-warning fw-bold">
+            Don't have any message.
+        </td>
+    </tr>
+    }
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Name</td>
+            <td>@item.Subject</td>
+            <td>@item.MessageDate.ToString("dd.MM.yyyy")</td>
+            <td><a href="#" class="btn btn-outline-dark">Read</a></td>
+            <td><a href="#" class="btn btn-outline-danger">Delete</a></td>
+        </tr>
+    }
+</table>

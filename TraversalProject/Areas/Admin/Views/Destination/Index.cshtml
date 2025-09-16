@@ -1,0 +1,35 @@
+﻿@using Traversal.Core.Concrete.Entities;
+@model List<Destination>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Destinations</h1>
+<table class="table table-bordered">
+    <tr>
+    <th>#</th>
+    <th>City</th>
+    <th>Capacity</th>
+    <th>See To Site</th>
+    <th>Update</th>
+    <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count += 1;
+        <tr>
+            <td>@count</td>
+            <td>@item.City</td>
+            <td>@item.Capacity</td>
+            <td><a href="/Destination/DestinationDetails/@item.Id" class="btn btn-outline-info" target="_blank">See To Site</a></td>
+            <td><a href="/Admin/Destination/UpdateDestination/@item.Id" class="btn btn-outline-warning">Update</a></td>
+            <td><a href="/Admin/Destination/DeleteDestination/@item.Id" class="btn btn-outline-danger">Delete</a></td>
+            
+        </tr>
+    }
+</table>
+
+<a href="/Admin/Destination/AddDestination" class="btn btn-outline-primary">Add a New Destination</a>
