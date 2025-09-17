@@ -24,6 +24,9 @@ namespace TraversalProject
             //CQRS Handler için
             builder.Services.AddScoped<GetAllDestinationQueryHandler>();
             builder.Services.AddScoped<GetDestinationByIdQueryHandler>();
+            builder.Services.AddScoped<CreateDestinationCommandHandler>();
+            builder.Services.AddScoped<RemoveDestinationCommandHandler>();
+            builder.Services.AddScoped<UpdateDestinationCommandHandler>();
             
             //Api kullanýmý için
             builder.Services.AddHttpClient(); 
