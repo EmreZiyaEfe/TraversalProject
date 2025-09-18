@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -27,6 +28,9 @@ namespace TraversalProject
             builder.Services.AddScoped<CreateDestinationCommandHandler>();
             builder.Services.AddScoped<RemoveDestinationCommandHandler>();
             builder.Services.AddScoped<UpdateDestinationCommandHandler>();
+
+            //MediatR için
+            builder.Services.AddMediatR(typeof(Program));
             
             //Api kullanýmý için
             builder.Services.AddHttpClient(); 

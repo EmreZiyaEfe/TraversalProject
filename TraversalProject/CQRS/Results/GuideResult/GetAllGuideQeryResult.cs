@@ -1,0 +1,10 @@
+﻿namespace TraversalProject.CQRS.Results.GuideResult
+{
+    public class GetAllGuideQeryResult
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
+    }
+}

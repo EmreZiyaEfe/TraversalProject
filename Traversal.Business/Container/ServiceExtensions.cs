@@ -6,10 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Traversal.Business.Abstract;
+using Traversal.Business.Abstract.AbstractUow;
 using Traversal.Business.Concrete;
+using Traversal.Business.Concrete.ConcreteUow;
 using Traversal.Business.ValidationRules;
 using Traversal.DataAccess.Abstract;
 using Traversal.DataAccess.EntityFramework;
+using Traversal.DataAccess.UnitOfWork;
 using Traversal.DTO.DTOs.AnnouncementDtos;
 
 namespace Traversal.Business.Container
@@ -53,6 +56,11 @@ namespace Traversal.Business.Container
             services.AddScoped<IExcelService, ExcelManager>();
 
             services.AddScoped<IPdfService, PdfManager>();
+
+            services.AddScoped<IAccountService, AccountManager>();
+            services.AddScoped<IAccountDal, EfAccountDal>();
+
+            services.AddScoped<IUowDal, UowDal>();
         }
 
         public static void CustomValidator(this IServiceCollection services)
