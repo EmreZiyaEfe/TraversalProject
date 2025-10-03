@@ -23,5 +23,10 @@ namespace Traversal.DataAccess.EntityFramework
         {
             return _appDbContext.Comments.Include(c => c.Destination).ToList();
         }
+
+        public List<Comment> GetListCommentWithDestinationAndUser(int id)
+        {
+            return _appDbContext.Comments.Where(c => c.DestinationId == id).Include(x => x.AppUser).ToList();
+        }
     }
 }

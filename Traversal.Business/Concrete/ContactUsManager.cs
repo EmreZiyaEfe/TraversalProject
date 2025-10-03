@@ -20,7 +20,7 @@ namespace Traversal.Business.Concrete
 
         public void Add(ContactUs entity)
         {
-            throw new NotImplementedException();
+            _contactUsDal.Add(entity);
         }
 
         public void ContactUsStatusChangeToFalse(int id)

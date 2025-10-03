@@ -5,11 +5,6 @@
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-
-
-
-
-
 <body>
     <!-- about breadcrumb -->
     <section class="w3l-about-breadcrumb text-left">
@@ -32,11 +27,11 @@
                 <div class="row">
                     @foreach (var item in Model)
                     {
-                        <div class="col-lg-4 col-md-4 col-6">
+                        <div class="col-lg-4 col-md-4 col-6 mb-4">
                             <div class="column">
-                                <a href="/Destination/DestinationDetails/@item.Id"><img src="@item.Image" alt="" class="img-fluid"></a>
+                                <a href="/Destination/DestinationDetails/@item.Id"><img src="@item.Image" style="width:370px; height:300px" alt="" class="img-fluid"></a>
                                 <div class="info">
-                                    <h4><a href="blog-single.html">@item.City</a></h4>
+                                    <h4><a href="/Destination/DestinationDetails/@item.Id">@item.City</a></h4>
                                     <p>@item.DayNight</p>
                                     <div class="dst-btm">
                                         <h6 class="">Start From </h6>
@@ -47,7 +42,7 @@
                         </div>
 
                     }
-                    
+
                 </div>
             </div>
         </div>

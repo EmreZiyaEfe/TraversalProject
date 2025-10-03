@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Traversal.DataAccess.Concrete;
 
@@ -11,9 +12,10 @@ using Traversal.DataAccess.Concrete;
 namespace Traversal.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251002193457_mig_comment_appuser_relation")]
+    partial class mig_comment_appuser_relation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -370,6 +372,7 @@ namespace Traversal.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("State")
@@ -377,6 +380,9 @@ namespace Traversal.DataAccess.Migrations
 
                     b.Property<DateTime>("TypeDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -477,9 +483,6 @@ namespace Traversal.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("DayNight")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -491,9 +494,6 @@ namespace Traversal.DataAccess.Migrations
                     b.Property<string>("FirstContent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("GuideId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -514,8 +514,6 @@ namespace Traversal.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GuideId");
 
                     b.ToTable("Destinations");
                 });
@@ -781,15 +779,6 @@ namespace Traversal.DataAccess.Migrations
                     b.Navigation("Destination");
                 });
 
-            modelBuilder.Entity("Traversal.Core.Concrete.Entities.Destination", b =>
-                {
-                    b.HasOne("Traversal.Core.Concrete.Entities.Guide", "Guide")
-                        .WithMany("Destinations")
-                        .HasForeignKey("GuideId");
-
-                    b.Navigation("Guide");
-                });
-
             modelBuilder.Entity("Traversal.Core.Concrete.Entities.Reservation", b =>
                 {
                     b.HasOne("Traversal.Core.Concrete.Entities.AppUser", "AppUser")
@@ -821,11 +810,6 @@ namespace Traversal.DataAccess.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Reservations");
-                });
-
-            modelBuilder.Entity("Traversal.Core.Concrete.Entities.Guide", b =>
-                {
-                    b.Navigation("Destinations");
                 });
 #pragma warning restore 612, 618
         }

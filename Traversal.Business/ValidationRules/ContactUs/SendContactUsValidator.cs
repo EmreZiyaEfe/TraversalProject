@@ -1,0 +1,24 @@
+﻿using FluentValidation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Traversal.DTO.DTOs.ContactDTOs;
+
+namespace Traversal.Business.ValidationRules.ContactUs
+{
+    public class SendContactUsValidator : AbstractValidator<SendMessageDto>
+    {
+        public SendContactUsValidator()
+        {
+            RuleFor(x => x.Email).NotEmpty().WithMessage("The email field cannot be empty.");
+            RuleFor(x => x.Subject).NotEmpty().WithMessage("The subject field cannot be empty.");
+            RuleFor(x => x.Name).NotEmpty().WithMessage("The name field cannot be empty.");
+            RuleFor(x => x.MessageBody).NotEmpty().WithMessage("The message body field cannot be empty.");
+            RuleFor(x => x.Subject).MinimumLength(3).WithMessage("The subject field must be at least 3 characters.");
+            RuleFor(x => x.Subject).MaximumLength(150).WithMessage("The subject field must be at most 150 characters.");
+
+        }
+    }
+}

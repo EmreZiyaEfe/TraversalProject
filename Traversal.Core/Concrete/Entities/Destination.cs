@@ -20,8 +20,11 @@ namespace Traversal.Core.Concrete.Entities
         public string  FirstContent { get; set; }
         public string SecondContent { get; set; }
         public string Image2 { get; set; }
+        public DateTime Date { get; set; }
 
         public List<Comment> Comments { get; set; }
         public List<Reservation> Reservations { get; set; }
+        public int? GuideId { get; set; }
+        public Guide Guide { get; set; }
     }
 }

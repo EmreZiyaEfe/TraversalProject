@@ -14,5 +14,6 @@ namespace Traversal.Core.Concrete.Entities
         public string Image { get; set; }
         public string XUrl { get; set; }
         public string InstagramUrl { get; set; }
+        public List<Destination> Destinations { get; set; }
     }
 }

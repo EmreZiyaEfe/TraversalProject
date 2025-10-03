@@ -13,6 +13,10 @@ namespace Traversal.Core.Concrete.Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public string? Gender { get; set; }
+
+        //Nav Property
         public List<Reservation> Reservations { get; set; }
+        public List<Comment> Comments { get; set; }
+
     }
 }

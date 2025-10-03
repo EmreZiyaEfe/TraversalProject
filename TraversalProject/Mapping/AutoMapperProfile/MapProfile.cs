@@ -2,6 +2,7 @@
 using Traversal.Core.Concrete.Entities;
 using Traversal.DTO.DTOs.AnnouncementDtos;
 using Traversal.DTO.DTOs.AppUserDTOs;
+using Traversal.DTO.DTOs.ContactDTOs;
 
 namespace TraversalProject.Mapping.AutoMapperProfile
 {
@@ -24,6 +25,9 @@ namespace TraversalProject.Mapping.AutoMapperProfile
 
             CreateMap<AppUserLoginDtos, AppUser>();
             CreateMap<AppUser, AppUserLoginDtos>();
+
+
+            CreateMap<SendMessageDto, ContactUs>().ReverseMap();
 
         }
     }
