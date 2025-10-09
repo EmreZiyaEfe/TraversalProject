@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Traversal.Business", "Trave
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Traversal.DTO", "Traversal.DTO\Traversal.DTO.csproj", "{42F7F000-E34C-46C7-8D68-903144667CD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRApi", "SignalRApi\SignalRApi.csproj", "{2BC5FA11-66E1-42C4-8D5F-58AAE25B2BD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRApi", "SignalRApi\SignalRApi.csproj", "{2BC5FA11-66E1-42C4-8D5F-58AAE25B2BD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRConsume", "SignalRConsume\SignalRConsume.csproj", "{0F0C51DE-2D80-46B2-96EF-A26623626298}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRApiForSql", "SignalRApiForSql\SignalRApiForSql.csproj", "{59B47228-320F-4CC1-93A2-CF04D526638E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{2BC5FA11-66E1-42C4-8D5F-58AAE25B2BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BC5FA11-66E1-42C4-8D5F-58AAE25B2BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BC5FA11-66E1-42C4-8D5F-58AAE25B2BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F0C51DE-2D80-46B2-96EF-A26623626298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F0C51DE-2D80-46B2-96EF-A26623626298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F0C51DE-2D80-46B2-96EF-A26623626298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F0C51DE-2D80-46B2-96EF-A26623626298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59B47228-320F-4CC1-93A2-CF04D526638E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B47228-320F-4CC1-93A2-CF04D526638E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B47228-320F-4CC1-93A2-CF04D526638E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B47228-320F-4CC1-93A2-CF04D526638E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

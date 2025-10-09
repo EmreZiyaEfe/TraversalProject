@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using SignalRApi.DataAccess;
-using SignalRApi.DataAccess.Entities;
-using SignalRApi.Hubs;
+using SignalRApiForSql.DataAccess;
+using SignalRApiForSql.Hubs;
 
-namespace SignalRApi.Model
+namespace SignalRApiForSql.Models
 {
     public class VisitorService
     {
@@ -25,7 +24,7 @@ namespace SignalRApi.Model
         {
             await _context.Visitors.AddAsync(visitor);
             await _context.SaveChangesAsync();
-            await _hubContext.Clients.All.SendAsync("CallVisitorList","bbb");
+            await _hubContext.Clients.All.SendAsync("ReceiveVisitorList", GetVisitorChartList());
         }
 
         public List<VisitorChart> GetVisitorChartList()
@@ -33,18 +32,25 @@ namespace SignalRApi.Model
             List<VisitorChart> visitorCharts = new List<VisitorChart>();
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
-                command.CommandText = "select * from crosstab ('select VisitDate,City,VisitCityCount from Visitors order by 1,2') as ct(VisitDate date,City1 int, City2 int, City3 int, City4 int, City5 int)";
+                command.CommandText = "select tarih,[1],[2],[3],[4],[5] from \r\n(select[City],CityVisitCount,CAST([VisitDate] as Date) \r\nas tarih from Visitors) \r\nas visitTable Pivot \r\n(Sum(CityVisitCount) \r\nfor City in([1],[2],[3],[4],[5])) \r\nas pivottable \r\norder by \r\ntarih asc";
                 command.CommandType = System.Data.CommandType.Text;
                 _context.Database.OpenConnection();
                 using (var reader = command.ExecuteReader())
                 {
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         VisitorChart visitorChart = new VisitorChart();
                         visitorChart.VisitDate = reader.GetDateTime(0).ToShortDateString();
                         Enumerable.Range(1, 5).ToList().ForEach(x =>
                         {
-                            visitorChart.Counts.Add(reader.GetInt32(x));
+                            if (DBNull.Value.Equals(reader[x]))
+                            {
+                                visitorChart.Counts.Add(0);
+                            }
+                            else
+                            {
+                                visitorChart.Counts.Add(reader.GetInt32(x));
+                            }
                         });
                         visitorCharts.Add(visitorChart);
                     }
