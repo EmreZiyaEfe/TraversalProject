@@ -9,6 +9,7 @@ namespace Traversal.DataAccess.Abstract
 {
     public interface IDestinationDal : IGenericDal<Destination>
     {
-        Destination GetDestinationWithGuide(int id); 
+        Destination GetDestinationWithGuide(int id);
+        List<Destination> GetLast4Destinations();
     }
 }

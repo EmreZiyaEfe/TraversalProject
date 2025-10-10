@@ -16,6 +16,12 @@ namespace Traversal.DataAccess.EntityFramework
         {
             return _appDbContext.Destinations.Where(x => x.Id == id).Include(x => x.Guide).FirstOrDefault();
         }
+
+        public List<Destination> GetLast4Destinations()
+        {
+            var values = _appDbContext.Destinations.Take(4).OrderByDescending(x => x.Id).ToList();
+            return values;
+        }
     }
 
 

@@ -87,6 +87,12 @@ namespace TraversalProject
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
+            //if user not login
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Login/SignIn";
+            });
+
 
             //Dependency Injections
             builder.Services.ContainerDependencies();

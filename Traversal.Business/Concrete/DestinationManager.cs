@@ -43,6 +43,11 @@ namespace Traversal.Business.Concrete
             return _destinationDal.GetDestinationWithGuide(id);
         }
 
+        public List<Destination> TGetLast4Destinations()
+        {
+            return _destinationDal.GetLast4Destinations();
+        }
+
         public void Update(Destination entity)
         {
             _destinationDal.Update(entity);
