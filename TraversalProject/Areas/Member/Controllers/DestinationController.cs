@@ -21,5 +21,16 @@ namespace TraversalProject.Areas.Member.Controllers
             var values = _destinationService.GetAll();
             return View(values);
         }
+
+        public IActionResult GetCitiesSearchByName(string searchCity)
+        {
+            ViewData["CurrentFilter"] = searchCity;
+            var values = from x in _destinationService.GetAll() select x;
+            if (!string.IsNullOrEmpty(searchCity))
+            {
+                values = values.Where(c => c.City.ToLower().Contains(searchCity.ToLower()));
+            }
+            return View(values.ToList());
+        }
     }
 }

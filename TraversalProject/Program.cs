@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using Serilog;
@@ -21,6 +22,8 @@ namespace TraversalProject
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+         
 
             //CQRS Handler için
             builder.Services.AddScoped<GetAllDestinationQueryHandler>();
@@ -87,6 +90,14 @@ namespace TraversalProject
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
+            //multilanguage support
+            builder.Services.AddLocalization(opt =>
+            {
+                opt.ResourcesPath = "Resources";
+            });
+
+            builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+
             //if user not login
             builder.Services.ConfigureApplicationCookie(options =>
             {
@@ -117,6 +128,11 @@ namespace TraversalProject
             app.UseAuthentication();
             app.UseAuthorization();
 
+            //Multilanguage support
+            var supportedCultures = new[] { "en", "fr", "de", "tr" };
+            var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[3]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+
+            app.UseRequestLocalization(localizationOptions);
 
 
 
@@ -143,3 +159,19 @@ namespace TraversalProject
         }
     }
 }
+
+
+
+// Language Localization
+//builder.Services.AddLocalization(opt =>
+//{
+//    opt.ResourcesPath = "Resources";
+//});
+
+//builder.Services.Configure<RequestLocalizationOptions>(options =>
+//{
+//    options.SetDefaultCulture("fr");
+//    options.AddSupportedUICultures("tr", "en", "fr");
+//    options.FallBackToParentUICultures = true;
+//    options.RequestCultureProviders.Clear();
+//});
