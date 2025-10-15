@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Traversal.Business.Abstract;
 using Traversal.Business.Concrete;
 
 namespace TraversalProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class CommentController : Controller
     {
         private readonly ICommentService _commentService;

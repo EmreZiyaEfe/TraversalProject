@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Traversal.Core.Concrete.Entities;
 
 namespace TraversalProject.Areas.Member.Controllers
 {
     [Area("Member")]
+    [Authorize(Roles = "Member")]
+
     public class DashboardController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

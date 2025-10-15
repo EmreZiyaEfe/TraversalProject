@@ -8,8 +8,8 @@ using TraversalProject.Areas.Admin.Models;
 
 namespace TraversalProject.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class AnnouncementController : Controller
     {
         private readonly IAnnouncementService _announcementService;

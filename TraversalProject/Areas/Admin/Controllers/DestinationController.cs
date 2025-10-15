@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Traversal.Business.Abstract;
 using Traversal.Business.Concrete;
 using Traversal.Core.Concrete.Entities;
@@ -6,6 +7,7 @@ using Traversal.Core.Concrete.Entities;
 namespace TraversalProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class DestinationController : Controller
     {
         private readonly IDestinationService _destinationService;

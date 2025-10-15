@@ -7,7 +7,7 @@ using TraversalProject.CQRS.Queries.DestinationQueries;
 namespace TraversalProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class DestinationCQRSController : Controller
     {
         private readonly GetAllDestinationQueryHandler _handler;

@@ -7,7 +7,7 @@ using TraversalProject.Areas.Admin.Models;
 namespace TraversalProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class BookingHotelSearchController : Controller
     {
         public async Task<IActionResult> Index()

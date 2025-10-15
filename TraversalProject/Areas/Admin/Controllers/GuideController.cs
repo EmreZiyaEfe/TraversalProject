@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Traversal.Business.Abstract;
 using Traversal.Business.ValidationRules;
@@ -7,6 +8,7 @@ using Traversal.Core.Concrete.Entities;
 namespace TraversalProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class GuideController : Controller
     {
         private readonly IGuideService _guideService;

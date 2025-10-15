@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Traversal.Business.Abstract;
@@ -8,6 +9,8 @@ using Traversal.Core.Concrete.Entities;
 namespace TraversalProject.Areas.Member.Controllers
 {
     [Area("Member")]
+    [Authorize(Roles = "Member")]
+
     public class ReservationController : Controller
     {
         private readonly IDestinationService _destinationService;

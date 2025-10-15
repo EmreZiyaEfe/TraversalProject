@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics.Metrics;
 using Traversal.Business.Abstract;
@@ -8,6 +9,7 @@ using TraversalProject.Models;
 namespace TraversalProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class CityController : Controller
     {
         private readonly IDestinationService _destinationService;

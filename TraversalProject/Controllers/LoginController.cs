@@ -69,7 +69,7 @@ namespace TraversalProject.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Profile", new {area = "Member"});
+                    return RedirectToAction("Index", "Default");
                 }
                 else
                 {
@@ -77,6 +77,12 @@ namespace TraversalProject.Controllers
                 }
             }
             return View();
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Login");
         }
 
     }

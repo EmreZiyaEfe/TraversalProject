@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Traversal.Core.Concrete.Entities;
 using TraversalProject.Areas.Member.Models;
@@ -6,7 +7,8 @@ using TraversalProject.Areas.Member.Models;
 namespace TraversalProject.Areas.Member.Controllers
 {
 	[Area("Member")]
-	[Route("Member/[controller]/[action]")]
+    [Authorize(Roles = "Member")]
+    [Route("Member/[controller]/[action]")]
 	public class ProfileController : Controller
 	{
 		private readonly UserManager<AppUser> _userManager;

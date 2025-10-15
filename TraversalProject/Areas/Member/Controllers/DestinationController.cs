@@ -6,7 +6,8 @@ using Traversal.Business.Concrete;
 namespace TraversalProject.Areas.Member.Controllers
 {
     [Area("Member")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Member")]
+
     public class DestinationController : Controller
     {
         private readonly IDestinationService _destinationService;

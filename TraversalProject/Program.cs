@@ -69,7 +69,10 @@ namespace TraversalProject
             //});
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews().AddFluentValidation();
+            builder.Services.AddControllersWithViews()
+                .AddFluentValidation()
+                .AddSessionStateTempDataProvider();
+            builder.Services.AddSession();
 
             //DbContext
             builder.Services.AddDbContext<AppDbContext>(options =>
@@ -79,6 +82,7 @@ namespace TraversalProject
             builder.Services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddErrorDescriber<CustomIdentityValidator>()
+                .AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider)
                 .AddDefaultTokenProviders();
 
             //Proje seviyesi Authentication
@@ -123,6 +127,8 @@ namespace TraversalProject
             app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
             app.UseAuthentication();
