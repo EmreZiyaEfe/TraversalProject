@@ -116,9 +116,15 @@ Dış dünyaya veri sağlayan RESTful API’dir.
 
 
 ### WebUI - Admin Panel
-![Admin Dashboard](path/to/admin-dashboard.png)
+![Admin Dashboard](https://github.com/user-attachments/assets/f161cc23-493f-4c3f-ac53-1d0d15abe852)
+![](https://github.com/user-attachments/assets/a2aa29da-a2f2-4f81-8e9e-3fe0d0fc8141)
+![](https://github.com/user-attachments/assets/5b8b1cd8-e0bc-457e-988b-c441bde2a132)
+![](https://github.com/user-attachments/assets/3231312c-a5d5-4fac-92fb-ea3b5904ba1f)
+
 
 ### WebUI - User Panel
-![User Dashboard](path/to/user-dashboard.png)
+![User Dashboard](https://github.com/user-attachments/assets/e7bde8dd-e0dd-4144-814e-96c43341bbbd)
+![](https://github.com/user-attachments/assets/153d2f7a-5c0f-4eba-972f-4c3cef27635a)
+
 
 
